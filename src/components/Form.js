@@ -1,5 +1,8 @@
 import * as React from "react";
 import { useState } from "react";
+//import ENV from .env
+// import dotenv from 'dotenv';
+// dotenv.config();
 
 export default function Form() {
     const [formData, setFormData] = useState({
@@ -13,8 +16,9 @@ export default function Form() {
     };
 
     const handleSubmit = (event) => {
+        const BACKEND_URL = "https://login-react-tailwind-express-g4j3-dev.fl0.io/auth";
         event.preventDefault();
-        fetch('http://localhost:3001/auth', {
+        fetch( BACKEND_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
