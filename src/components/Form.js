@@ -14,7 +14,7 @@ export default function Form() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch('http://localhost:3000/auth', {
+        fetch('http://localhost:3001/auth', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

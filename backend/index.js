@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import cors from 'cors';
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(cors());
 
@@ -40,8 +40,13 @@ app.post('/auth', (req, res) => {
   console.log(req.body);
   const {email, password} = req.body;
   const user = bd.find(u => u.email === email);
+  const pass = bd.find(u => u.password === password);
   if (!user) {
     res.status(401).json({message: "Usuario no encontrado"});
+    return;
+  }
+  if (!pass) {
+    res.status(401).json({message: "Contraseña incorrecta"});
     return;
   }
   const tokenAuth = token({email, id: user.id});
